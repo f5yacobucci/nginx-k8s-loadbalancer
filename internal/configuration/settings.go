@@ -8,14 +8,15 @@ package configuration
 import (
 	"context"
 	"fmt"
+	"strings"
+	"time"
+
 	"github.com/sirupsen/logrus"
 	corev1 "k8s.io/api/core/v1"
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
 	"k8s.io/client-go/informers"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/cache"
-	"strings"
-	"time"
 )
 
 const (
@@ -149,7 +150,7 @@ func NewSettings(ctx context.Context, k8sClient *kubernetes.Clientset) (*Setting
 			},
 		},
 		Watcher: WatcherSettings{
-			NginxIngressNamespace: "nginx-ingress",
+			NginxIngressNamespace: "nginx-gateway",
 			ResyncPeriod:          0,
 		},
 	}
